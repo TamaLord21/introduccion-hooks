@@ -4,7 +4,7 @@ import Contacto from "../pages/Contacto";
 import Home from "../pages/Home";
 export let routerApp = [
   {
-    path: "/",
+    path: "/Login",
     element: <Login />,
   },
   {
