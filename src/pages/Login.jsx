@@ -1,19 +1,30 @@
 import './Login.css'
 import { useState } from 'react'
 import { usuarios } from '../utils/dataBase'
-
-
-function buscarUsuario(email, password) {
-  return usuarios.find(
-    (usuario) => usuario.email === email && usuario.password === password
-  );
-}
+import {useNavigate} from 'react-router-dom'
 
 function Login() { let [getEmail, setEmail] = useState("")
     let [getPassword, setPassword] = useState("")
-    function iniciarSesion(){
-      
+    function iniciarSesion(){  
     }
+    let navigate = useNavigate()
+
+    function buscarUsuario() {
+    let usuarioEncontrado = usuarios.find(
+    (usuario) => getEmail === usuario.email && getPassword === usuario.password
+  )
+    return usuarioEncontrado
+}
+
+function iniciarSesion(){
+  if (buscarUsuario()) {
+    alert("Inicio de sesion exitoso" + getEmail)
+    navigate('/home')
+  } else {
+    alert("Usuario o contraseña incorrecta")
+  }
+}
+
   return ( 
 <div className="container">
   <div className="heading">SignIn to your account</div>
@@ -44,9 +55,10 @@ function Login() { let [getEmail, setEmail] = useState("")
     </div>
 
     <div className="btn-container">
-      <button className="btn">Submit</button>
+      <button type="button" className="btn" onClick={iniciarSesion}>Enter</button>
       <div className="acc-text">
-        New here ?
+        New here?
+        <br />
         <span>Create Account</span>
       </div>
     </div>
