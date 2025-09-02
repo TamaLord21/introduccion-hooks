@@ -1,5 +1,13 @@
 import './Login.css'
 import { useState } from 'react'
+import { usuarios } from '../utils/dataBase'
+
+
+function buscarUsuario(email, password) {
+  return usuarios.find(
+    (usuario) => usuario.email === email && usuario.password === password
+  );
+}
 
 function Login() { let [getEmail, setEmail] = useState("")
     let [getPassword, setPassword] = useState("")
@@ -7,37 +15,37 @@ function Login() { let [getEmail, setEmail] = useState("")
       
     }
   return ( 
-<div class="container">
-  <div class="heading">SignIn to your account</div>
-  <form class="form" action="">
-    <div class="input-field">
+<div className="container">
+  <div className="heading">SignIn to your account</div>
+  <form className="form" action="">
+    <div className="input-field">
     </div>
-    <div class="input-field">
+    <div className="input-field">
       <input
         required=""
-        autocomplete="off"
+        autoComplete="off"
         type="email"
         name="email"
         id="email"
         onChange={(e)=>setEmail(e.target.value)}
       />
-      <label for="email">Email</label>
+      <label htmlFor="email">Email</label>
     </div>
-    <div class="input-field">
+    <div className="input-field">
       <input
         required=""
-        autocomplete="off"
+        autoComplete="off"
         type="password"
         name="text"
         id="password"
         onChange={(e)=>setPassword(e.target.value)}
       />
-      <label for="username">Password</label>
+      <label htmlFor="username">Password</label>
     </div>
 
-    <div class="btn-container">
-      <button class="btn">Submit</button>
-      <div class="acc-text">
+    <div className="btn-container">
+      <button className="btn">Submit</button>
+      <div className="acc-text">
         New here ?
         <span>Create Account</span>
       </div>
