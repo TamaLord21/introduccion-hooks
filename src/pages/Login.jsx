@@ -2,6 +2,7 @@ import './Login.css'
 import { useState } from 'react'
 import { usuarios } from '../utils/dataBase'
 import {useNavigate} from 'react-router-dom'
+import { alertaRedireccion } from '../utils/alerts'
 
 function Login() { let [getEmail, setEmail] = useState("")
     let [getPassword, setPassword] = useState("")
@@ -18,8 +19,7 @@ function Login() { let [getEmail, setEmail] = useState("")
 
 function iniciarSesion(){
   if (buscarUsuario()) {
-    alert("Inicio de sesion exitoso" + getEmail)
-    navigate('/home')
+    alertaRedireccion("Bienvenido " + buscarUsuario().name, "success", navigate, '/home')
   } else {
     alert("Usuario o contraseña incorrecta")
   }
